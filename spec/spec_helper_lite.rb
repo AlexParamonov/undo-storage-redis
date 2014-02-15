@@ -1,0 +1,12 @@
+if Undo::Storage::Redis::Gemspec::RUNNING_ON_CI
+  require 'coveralls'
+  Coveralls.wear!
+else
+  require 'pry'
+end
+
+ENV['RAILS_ENV'] ||= 'test'
+require 'rspec'
+require 'undo/storage/redis'
+
+$: << File.expand_path('../lib', File.dirname(__FILE__))
