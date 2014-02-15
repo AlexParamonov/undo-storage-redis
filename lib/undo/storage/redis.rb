@@ -1,3 +1,5 @@
+require 'undo/serializer/null'
+
 module Undo
   module Storage
     class Redis
