@@ -34,7 +34,6 @@ Or install it yourself as:
 Requirements
 ------------
 1. Ruby 1.9 or above
-1. undo-serializer-null gem
 
 Contacts
 -------------
