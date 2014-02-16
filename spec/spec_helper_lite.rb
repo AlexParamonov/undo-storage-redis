@@ -7,6 +7,5 @@ end
 
 ENV['RAILS_ENV'] ||= 'test'
 require 'rspec'
-require 'undo/storage/redis'
 
 $: << File.expand_path('../lib', File.dirname(__FILE__))

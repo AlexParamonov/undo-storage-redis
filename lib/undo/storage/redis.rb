@@ -1,11 +1,10 @@
-require 'undo/serializer/null'
+require 'json'
 
 module Undo
   module Storage
     class Redis
       def initialize(redis, options = {})
         @redis = redis
-        @serializer = options[:serializer] || Undo::Serializer::Null.new
       end
 
       def put(uuid, object)
@@ -17,14 +16,14 @@ module Undo
       end
 
       private
-      attr_reader :redis, :serializer
+      attr_reader :redis
 
       def serialize(object)
-        serializer.to_json object
+        object.to_json
       end
 
       def deserialize(data)
-        serializer.from_json data
+        JSON.parse data
       end
     end
   end
