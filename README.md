@@ -37,7 +37,7 @@ Requirements
 
 Contacts
 -------------
-Have questions or recommendations? Contact me via `alexander.n.paramonov@gmail.com`
+Have questions or recommendations? Contact me via `alexander.n.paramonov@gmail.com`  
 Found a bug or have enhancement request? You are welcome at [Github bugtracker](https://github.com/AlexParamonov/undo-storage-redis/issues)
 
 

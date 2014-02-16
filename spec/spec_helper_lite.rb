@@ -1,4 +1,4 @@
-if Undo::Storage::Redis::Gemspec::RUNNING_ON_CI
+if !!ENV['CI']
   require 'coveralls'
   Coveralls.wear!
 else

@@ -1,4 +1,11 @@
 source 'https://rubygems.org'
-
-# Specify your gem's dependencies in undo.gemspec
 gemspec
+
+group :test do
+  if !!ENV['CI']
+    gem "coveralls"
+  else
+    gem "pry"
+    gem "pry-plus" if "ruby" == RUBY_ENGINE
+  end
+end

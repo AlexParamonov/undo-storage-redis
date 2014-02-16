@@ -3,6 +3,8 @@ require 'json'
 module Undo
   module Storage
     class Redis
+      VERSION = "0.0.2"
+
       def initialize(redis, options = {})
         @redis = redis
       end
