@@ -14,7 +14,7 @@ module Undo
       end
 
       def fetch(uuid)
-        deserialize redis.get(uuid)
+        deserialize redis.get uuid
       end
 
       private
@@ -25,7 +25,7 @@ module Undo
       end
 
       def deserialize(data)
-        JSON.parse data
+        JSON.load data
       end
     end
   end
