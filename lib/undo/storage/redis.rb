@@ -6,19 +6,23 @@ module Undo
 
       def initialize(redis, options = {})
         @redis = redis
-        @options = options
+        @default_options = options
       end
 
-      def store(uuid, object)
-        redis.set uuid, serialize(object), options
+      def store(uuid, object, options = {})
+        redis.set uuid, serialize(object), default_options.merge(options)
       end
 
-      def fetch(uuid)
-        deserialize redis.get uuid, options
+      def fetch(uuid, options = {})
+        deserialize redis.get uuid
+      end
+
+      def delete(uuid, options = {})
+        deserialize redis.del uuid
       end
 
       private
-      attr_reader :redis, :options
+      attr_reader :redis, :default_options
 
       def serialize(object)
         object.to_json
