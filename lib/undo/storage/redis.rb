@@ -9,7 +9,7 @@ module Undo
         @options = options
       end
 
-      def put(uuid, object)
+      def store(uuid, object)
         redis.set uuid, serialize(object), options
       end
 

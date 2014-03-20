@@ -7,7 +7,7 @@ describe Undo::Storage::Redis do
 
   it "writes hash to redis" do
     expect(redis).to receive(:set).with "123", '{"hello":"world"}', anything
-    adapter.put "123", "hello" => "world"
+    adapter.store "123", "hello" => "world"
   end
 
   it "reads hash from redis" do
@@ -26,7 +26,7 @@ describe Undo::Storage::Redis do
 
     it "sends provided options to redis.set" do
       expect(redis).to receive(:set).with anything, anything, options
-      adapter.put "foo", "bar"
+      adapter.store "foo", "bar"
     end
 
     before do
