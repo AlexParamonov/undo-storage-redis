@@ -9,3 +9,7 @@ group :test do
     gem "pry-plus" if "ruby" == RUBY_ENGINE
   end
 end
+
+group :test, :development do
+  gem 'redis'
+end

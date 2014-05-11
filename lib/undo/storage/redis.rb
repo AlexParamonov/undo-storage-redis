@@ -1,36 +1,31 @@
 require 'json'
+require 'undo/storage/adapter'
 
 module Undo
   module Storage
-    class Redis
-
+    class Redis < Adapter
       def initialize(redis, options = {})
         @redis = redis
-        @default_options = options
+        super options
       end
 
       def store(uuid, object, options = {})
-        redis.set uuid, serialize(object), default_options.merge(options)
+        redis.set uuid,
+                  pack(object),
+                  adapter_options(options)
       end
 
       def fetch(uuid, options = {})
-        deserialize redis.get uuid
+        data = redis.get(uuid) or raise KeyError, "key #{uuid} not found"
+        unpack data
       end
 
       def delete(uuid, options = {})
-        deserialize redis.del uuid
+        redis.del uuid
       end
 
       private
-      attr_reader :redis, :default_options
-
-      def serialize(object)
-        object.to_json
-      end
-
-      def deserialize(data)
-        JSON.load data
-      end
+      attr_reader :redis
     end
   end
 end

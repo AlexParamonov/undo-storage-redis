@@ -1,5 +1,4 @@
 require "spec_helper_lite"
-require 'undo/storage/redis'
 
 describe Undo::Storage::Redis do
   subject { described_class.new redis }
@@ -27,7 +26,7 @@ describe Undo::Storage::Redis do
     let(:options) { { additional: :option } }
 
     it "does not send options to redis.get" do
-      expect(redis).to receive(:get).with "foo"
+      expect(redis).to receive(:get).with("foo") { '"bar"' }
       subject.fetch "foo"
     end
 
