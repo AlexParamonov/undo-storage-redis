@@ -17,3 +17,6 @@ matrix:
 
 script:
   - "bundle exec rake ci:all"
+
+services:
+  - redis-server
