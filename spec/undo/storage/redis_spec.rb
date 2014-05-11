@@ -26,7 +26,7 @@ describe Undo::Storage::Redis do
     let(:options) { { additional: :option } }
 
     it "does not send options to redis.get" do
-      expect(redis).to receive(:get).with("foo") { '"bar"' }
+      expect(redis).to receive(:get).with("foo") { "bar".to_json }
       subject.fetch "foo"
     end
 
@@ -39,11 +39,6 @@ describe Undo::Storage::Redis do
       expect(redis).to receive(:set).with anything, anything, options
       subject.store "foo", "bar"
     end
-
-    before do
-      # JSON.load behaves differently in 1.9
-      allow(redis).to receive(:get).with(any_args) { { :foo => :bar }.to_json }
-    end if RUBY_VERSION < "2.0"
   end
 
   describe "options" do
