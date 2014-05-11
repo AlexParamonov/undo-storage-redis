@@ -5,7 +5,7 @@ Undo
 [![Coverage Status](https://coveralls.io/repos/AlexParamonov/undo-storage-redis/badge.png?branch=master)](https://coveralls.io/r/AlexParamonov/undo-storage-redis?branch=master)
 [![Gem Version](https://badge.fury.io/rb/undo-storage-redis.png)](http://badge.fury.io/rb/undo-storage-redis)
 
-Redis storage adapter for Undo gem.
+Redis storage adapter for [Undo gem](https://github.com/AlexParamonov/undo).
 
 Contents
 ---------
@@ -34,6 +34,7 @@ Or install it yourself as:
 Requirements
 ------------
 1. Ruby 1.9 or above
+1. Undo gem
 
 Contacts
 -------------
